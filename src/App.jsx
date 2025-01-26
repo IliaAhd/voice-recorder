@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Records from "./pages/records";
-import Recorder from "./pages/recorder";
+import Recorder from "./pages/Recorder";
 import AppLayout from "./AppLayout";
 
 function App() {
