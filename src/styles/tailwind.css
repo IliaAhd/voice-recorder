@@ -1,0 +1,12 @@
+:root {
+  font-family: "Dosis", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+button {
+  cursor: pointer;
+}
+
+@import "tailwindcss";
