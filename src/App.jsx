@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Records from "./pages/records";
-import Recorder from "./pages/Recorder";
 import AppLayout from "./AppLayout";
+import Recorder from "./pages/Recorder";
+import Records from "./pages/Records";
 
 function App() {
   return (
