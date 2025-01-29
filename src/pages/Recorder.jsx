@@ -1,6 +1,6 @@
-import VoiceRecorder from "../features/record/VoiceRecorder";
 import BackButton from "../ui/BackButton";
 import Header from "../ui/Header";
+import VoiceRecorder from "../features/record/VoiceRecorder";
 
 function Recorder() {
   return (
@@ -9,6 +9,7 @@ function Recorder() {
         Voice Recording
         <BackButton />
       </Header>
+
       <VoiceRecorder />
     </>
   );

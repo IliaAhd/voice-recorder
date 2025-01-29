@@ -1,7 +1,7 @@
 function Header({ children, relative = false }) {
   return (
     <header
-      className={`w-full pb-12 text-center text-2xl font-bold ${relative && "relative"}`}
+      className={`w-full pb-8 text-center text-2xl font-bold ${relative && "relative"}`}
     >
       {children}
     </header>

@@ -1,10 +1,12 @@
 import { useAudioRecorder } from "react-audio-voice-recorder";
-import useAudios from "./useAudios";
 import RecordButton from "../../ui/RecordButton";
 import { HiOutlineMicrophone } from "react-icons/hi";
 import { BiMicrophoneOff } from "react-icons/bi";
 import RecordingTimer from "./RecordingTimer";
 import RecorderActions from "./RecorderActions";
+import useRecorder from "./useRecorder";
+import { AudioVisualizer, LiveAudioVisualizer } from "react-audio-visualize";
+import audio from "../../assets/audio.mp3";
 
 function VoiceRecorder() {
   const {
@@ -17,7 +19,7 @@ function VoiceRecorder() {
     isPaused,
     mediaRecorder,
   } = useAudioRecorder();
-  useAudios(recordingBlob);
+  useRecorder(recordingBlob);
 
   function handleRecord() {
     startRecording();
@@ -27,18 +29,28 @@ function VoiceRecorder() {
     stopRecording();
   }
 
+  console.log(audio);
+
   return (
     <>
-      {!isRecording ? (
-        <RecordButton onClick={handleRecord}>
-          <HiOutlineMicrophone />
+      {
+        <RecordButton onClick={!isRecording ? handleRecord : handleStopRecord}>
+          {!isRecording ? <HiOutlineMicrophone /> : <BiMicrophoneOff />}
         </RecordButton>
-      ) : (
-        <RecordButton onClick={handleStopRecord}>
-          <BiMicrophoneOff />
-        </RecordButton>
-      )}
+      }
+
       <RecordingTimer time={recordingTime} />
+
+      {isRecording && (
+        <LiveAudioVisualizer
+          mediaRecorder={mediaRecorder}
+          barColor="#AD46FF"
+          width={300}
+          barWidth={8}
+          height={75}
+        />
+      )}
+
       <RecorderActions
         isPaused={isPaused}
         togglePauseResume={togglePauseResume}
