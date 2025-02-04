@@ -44,12 +44,7 @@ button {
 }
 
 .rhap_main svg {
-  color: #ad46ff !important;
-}
-
-.rhap_progress-bar {
-  background-color: #ad46ff !important;
-  border-radius: 1rem !important;
+  color: #ad46ff;
 }
 
 .rhap_progress-indicator {
@@ -57,7 +52,7 @@ button {
 }
 
 .rhap_progress-filled {
-  background-color: #5703a7 !important;
+  background-color: #ad46ff !important;
 }
 
 .rhap_controls-section {
@@ -72,6 +67,10 @@ button {
   left: 18px !important;
   font-size: 12px !important;
   font-weight: bold !important;
+}
+
+.rhap_progress-section {
+  padding-left: 1rem !important;
 }
 
 @import "tailwindcss";

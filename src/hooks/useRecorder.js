@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import useLocalStorage from "../../hooks/useLocalStorage";
+import useLocalStorage from "use-local-storage";
 
 function useRecorder(blob) {
   const [audios, setAudios] = useLocalStorage("audios", []);
@@ -19,7 +19,7 @@ function useRecorder(blob) {
     };
   }, [blob, setAudios]);
 
-  return audios;
+  return [audios, setAudios];
 }
 
 export default useRecorder;

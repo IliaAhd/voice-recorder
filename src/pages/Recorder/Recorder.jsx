@@ -1,6 +1,6 @@
-import BackButton from "../ui/BackButton";
-import Header from "../ui/Header";
-import VoiceRecorder from "../features/record/VoiceRecorder";
+import BackButton from "../../components/ui/BackButton";
+import Header from "../../components/ui/Header";
+import VoiceRecorder from "./VoiceRecorder";
 
 function Recorder() {
   return (

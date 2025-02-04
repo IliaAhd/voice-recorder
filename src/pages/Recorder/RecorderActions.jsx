@@ -7,7 +7,7 @@ function RecorderActions({
   isRecording,
 }) {
   const toggleBtnClasses =
-    "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-purple-500";
+    "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-purple-500 ";
 
   function handlePause() {
     if (!isRecording) return;
@@ -16,7 +16,13 @@ function RecorderActions({
 
   return (
     <div className="relative flex w-full justify-between rounded-full bg-purple-100 px-1 font-bold">
-      <button className="px-2 py-1">Discard</button>
+      <button
+        disabled
+        className="!cursor-not-allowed px-2 py-1 text-gray-400"
+        title="Soon"
+      >
+        Discard
+      </button>
 
       <button onClick={handlePause}>
         {!isPaused ? (
@@ -26,7 +32,13 @@ function RecorderActions({
         )}
       </button>
 
-      <button className="px-2 py-1" onClick={() => stopRecording()}>
+      <button
+        className="px-2 py-1"
+        onClick={() => {
+          if (!isRecording) return;
+          stopRecording();
+        }}
+      >
         Save
       </button>
     </div>
