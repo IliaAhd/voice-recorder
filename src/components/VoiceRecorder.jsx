@@ -1,13 +1,13 @@
-import { useAudioRecorder } from "react-audio-voice-recorder";
-import useRecorder from "../../hooks/useRecorder";
+import useRecorder from "../hooks/useRecorder";
 import toast from "react-hot-toast";
 import { HiOutlineMicrophone } from "react-icons/hi";
 import { BiMicrophoneOff } from "react-icons/bi";
 import { LiveAudioVisualizer } from "react-audio-visualize";
 import RecordingTimer from "./RecordingTimer";
 import RecorderActions from "./RecorderActions";
-import RecordButton from "../../components/ui/RecordButton";
-import Waveform from "../../components/ui/Waveform";
+import RecordButton from "./RecordButton";
+import Waveform from "./Waveform";
+import { useRecorderContext } from "../contexts/RecorderContext";
 
 function VoiceRecorder() {
   const {
@@ -19,7 +19,8 @@ function VoiceRecorder() {
     recordingTime,
     isPaused,
     mediaRecorder,
-  } = useAudioRecorder();
+  } = useRecorderContext();
+
   useRecorder(recordingBlob);
 
   function handleRecord() {

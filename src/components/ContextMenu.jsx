@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRef, useState } from "react";
 import { HiDownload, HiTrash } from "react-icons/hi";
-import useRecorder from "../../hooks/useRecorder";
+import useRecorder from "../hooks/useRecorder";
 
 function ContextMenu({ className, icon, src, audio }) {
   const [showMenu, setShowMenu] = useState(false);

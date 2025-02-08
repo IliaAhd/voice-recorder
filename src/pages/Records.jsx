@@ -1,7 +1,7 @@
 import { HiOutlineMicrophone } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import Header from "../../components/ui/Header";
-import RecordsList from './RecordsList'
+import Header from "../components/Header";
+import RecordsList from '../components/RecordsList'
 
 function Records() {
   const navigate = useNavigate();

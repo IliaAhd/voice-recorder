@@ -16,15 +16,11 @@ function RecorderActions({
 
   return (
     <div className="relative flex w-full justify-between rounded-full bg-purple-100 px-1 font-bold">
-      <button
-        disabled
-        className="!cursor-not-allowed px-2 py-1 text-gray-400"
-        title="Soon"
-      >
+      <button disabled className="px-2 py-1 text-gray-400" title="Soon">
         Discard
       </button>
 
-      <button onClick={handlePause}>
+      <button onClick={handlePause} disabled={!isRecording}>
         {!isPaused ? (
           <HiPause className={toggleBtnClasses} />
         ) : (
@@ -34,10 +30,8 @@ function RecorderActions({
 
       <button
         className="px-2 py-1"
-        onClick={() => {
-          if (!isRecording) return;
-          stopRecording();
-        }}
+        disabled={!isRecording}
+        onClick={stopRecording}
       >
         Save
       </button>

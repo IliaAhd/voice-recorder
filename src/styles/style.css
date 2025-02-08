@@ -1,0 +1,19 @@
+:root {
+  font-family: "Dosis", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  color: gray;
+}
+
+@import "./tailwind.css";
+@import "./scrollbar.css";
+@import "./audioplayer.css";

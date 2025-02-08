@@ -1,4 +1,4 @@
-import { formatTime } from "../../utils/helpers";
+import { formatTime } from "../utils/helpers";
 
 
 function RecordingTimer({ time }) {
