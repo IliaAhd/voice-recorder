@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useRef, useState } from "react";
 import { HiDownload, HiTrash } from "react-icons/hi";
-import useRecorder from "../hooks/useRecorder";
+import { useRecorderContext } from "../contexts/RecorderContext";
 
 function ContextMenu({ className, icon, src, audio }) {
   const [showMenu, setShowMenu] = useState(false);
-  const [audios, setAudios] = useRecorder();
+  const { handleDeleteAudio } = useRecorderContext();
   const menuRef = useRef();
 
   const liStyles =
@@ -33,15 +33,13 @@ function ContextMenu({ className, icon, src, audio }) {
     const link = document.createElement("a");
     link.href = audioUrl;
     link.download = "audio.webm";
-    console.log(link);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   }
 
   function handleDelete() {
-    const filteredAudios = audios.filter((item) => item.src !== audio.src);
-    setAudios(filteredAudios);
+    handleDeleteAudio(audio.id);
   }
 
   return (

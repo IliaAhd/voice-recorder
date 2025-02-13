@@ -1,5 +1,3 @@
-import useRecorder from "../hooks/useRecorder";
-import toast from "react-hot-toast";
 import { HiOutlineMicrophone } from "react-icons/hi";
 import { BiMicrophoneOff } from "react-icons/bi";
 import { LiveAudioVisualizer } from "react-audio-visualize";
@@ -14,14 +12,11 @@ function VoiceRecorder() {
     startRecording,
     stopRecording,
     togglePauseResume,
-    recordingBlob,
     isRecording,
     recordingTime,
     isPaused,
     mediaRecorder,
   } = useRecorderContext();
-
-  useRecorder(recordingBlob);
 
   function handleRecord() {
     startRecording();
@@ -29,7 +24,6 @@ function VoiceRecorder() {
 
   function handleStopRecord() {
     stopRecording();
-    toast.success("Audio saved");
   }
 
   return (
