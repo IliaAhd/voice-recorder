@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useRef, useState } from "react";
 import { HiDownload, HiTrash } from "react-icons/hi";
 import { useRecorderContext } from "../contexts/RecorderContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 function ContextMenu({ className, icon, src, audio }) {
   const [showMenu, setShowMenu] = useState(false);
@@ -49,18 +50,26 @@ function ContextMenu({ className, icon, src, audio }) {
       className={`relative ${className}`}
     >
       {icon}
-      {showMenu && (
-        <ul className="absolute z-10 space-y-2 rounded-md bg-white py-2 text-sm font-semibold text-black shadow">
-          <li className={liStyles} onClick={handleDownload}>
-            <HiDownload className={iconStyles} />
-            Download
-          </li>
-          <li className={liStyles} onClick={handleDelete}>
-            <HiTrash className={iconStyles} />
-            Delete
-          </li>
-        </ul>
-      )}
+      <AnimatePresence>
+        {showMenu && (
+          <motion.ul
+            className="absolute z-10 space-y-2 rounded-md bg-white py-2 text-sm font-semibold text-black shadow"
+            initial={{ opacity: 0, scale: 0.8, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            <li className={liStyles} onClick={handleDownload}>
+              <HiDownload className={iconStyles} />
+              Download
+            </li>
+            <li className={liStyles} onClick={handleDelete}>
+              <HiTrash className={iconStyles} />
+              Delete
+            </li>
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </button>
   );
 }
