@@ -6,6 +6,7 @@ import RecordingTimer from "./RecordingTimer";
 import RecorderActions from "./RecorderActions";
 import RecordButton from "./RecordButton";
 import { useRecorderContext } from "../contexts/RecorderContext";
+import { useState } from "react";
 
 function VoiceRecorder() {
   const {
@@ -17,18 +18,24 @@ function VoiceRecorder() {
     isPaused,
     mediaRecorder,
   } = useRecorderContext();
+  const [clickDisabled, setClickDisabled] = useState(false);
 
   function handleRecord() {
+    if (clickDisabled) return;
+    setClickDisabled(true);
     startRecording();
+    setTimeout(() => setClickDisabled(false), 500);
   }
 
   function handleStopRecord() {
+    if (clickDisabled) return;
+    setClickDisabled(true);
     stopRecording();
+    setTimeout(() => setClickDisabled(false), 500);
   }
 
   return (
     <div className="flex flex-col items-center gap-4">
-      {/* Record Button with Scale Animation */}
       <motion.div
         whileTap={{ scale: 0.9 }}
         animate={{ y: isRecording ? 0 : 110 }}
@@ -44,7 +51,6 @@ function VoiceRecorder() {
         </RecordButton>
       </motion.div>
 
-      {/* Recording Timer with Smooth Fade */}
       <AnimatePresence>
         {isRecording && (
           <motion.div
@@ -58,7 +64,6 @@ function VoiceRecorder() {
         )}
       </AnimatePresence>
 
-      {/* Visualizer or Waveform - Animated Switch */}
       <motion.div
         key={isRecording ? "visualizer" : "waveform"}
         initial={{ opacity: 0, scale: 0.9 }}
@@ -75,7 +80,6 @@ function VoiceRecorder() {
             height={100}
           />
         ) : (
-          // Hide Waveform when recording
           <div style={{ height: 100, width: 300 }} />
         )}
       </motion.div>
