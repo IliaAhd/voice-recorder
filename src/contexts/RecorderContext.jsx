@@ -8,7 +8,7 @@ import {
 import { useAudioRecorder } from "react-audio-voice-recorder";
 import toast from "react-hot-toast";
 import setupIndexedDB, { useIndexedDBStore } from "use-indexeddb";
-import idbConfig from "../data/idbConfig";
+import idbConfig from "../config/idbConfig";
 
 const RecorderContext = createContext();
 setupIndexedDB(idbConfig);
